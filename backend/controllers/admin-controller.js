@@ -2,22 +2,20 @@ const User = require("../models/user-model");
 const Contact = require("../models/contact-model");
 const Registration = require("../models/eventRegister-model");
 
+// 1. Dashboard Stats Function
 const getDashboardStats = async (req, res) => {
   try {
-    // MongoDB se data fetch karna
     const totalUsers = await User.countDocuments();
     const totalContacts = await Contact.countDocuments();
     const totalRegs = await Registration.countDocuments();
 
-    // Stats Object
     const stats = {
       orders: totalRegs, 
-      revenue: (totalRegs * 499 / 1000).toFixed(1), // Example revenue calc
-      users: (totalUsers / 1).toFixed(0),
+      revenue: (totalRegs * 499 / 1000).toFixed(1),
+      users: totalUsers,
       regs: totalRegs
     };
 
-    // Chart Data (Mockup - Aap ise DB aggregation se bhi kar sakte hain)
     const charts = {
       sales: [12, 19, 3, 5, 2],
       orders: [5, 10, 8, 12, 7]
@@ -30,6 +28,16 @@ const getDashboardStats = async (req, res) => {
   }
 };
 
+// 2. Placeholder Functions (Taaki error na aaye)
+// Aap baad mein inmein logic add kar sakte hain
+const getAllUsers = async (req, res) => res.status(200).json({ message: "Not implemented yet" });
+const getUserById = async (req, res) => res.status(200).json({ message: "Not implemented yet" });
+const updateUserById = async (req, res) => res.status(200).json({ message: "Not implemented yet" });
+const deleteUserById = async (req, res) => res.status(200).json({ message: "Not implemented yet" });
+const getAllContacts = async (req, res) => res.status(200).json({ message: "Not implemented yet" });
+const deleteContactById = async (req, res) => res.status(200).json({ message: "Not implemented yet" });
+
+// Exporting everything correctly
 module.exports = { 
   getDashboardStats, 
   getAllUsers, 
