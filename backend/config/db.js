@@ -1,28 +1,28 @@
 const mongoose = require("mongoose");
 
-// Cache connection globally
+// Cache connection globally taaki Vercel par baar-baar connect na ho
 let cachedConnection = null;
 
 const connectDB = async () => {
-  // Agar pehle se connection hai, toh wahi use karein
   if (cachedConnection) {
     return cachedConnection;
   }
 
   try {
-    const URI = "mongodb+srv://aman:aman12345@aman.0sjvg1v.mongodb.net/mern_admin?retryWrites=true&w=majority&appName=aman&tlsAllowInvalidCertificates=true";
+    const URI = process.env.MONGODB_URI; // Variable use karein, hardcode na karein
     
-    // Connection options add karein
+    // Connection options (TLS bypass included safely)
     cachedConnection = await mongoose.connect(URI, {
       serverSelectionTimeoutMS: 5000,
+      tls: true,
+      tlsAllowInvalidCertificates: true, // Ye line TLS bypass ka kaam karegi
     });
     
     console.log("🔥 MongoDB Atlas Connected Successfully!");
     return cachedConnection;
   } catch (error) {
     console.error("❌ Connection Failed:", error.message);
-    // Yahan exit nahi karna hai, Vercel handle karega
-    throw error; 
+    throw error; // Vercel ko batane ke liye ki error hua hai
   }
 };
 

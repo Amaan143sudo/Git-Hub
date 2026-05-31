@@ -1,11 +1,9 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
-const mongoose = require("mongoose"); // 🔥 Mongoose yahan import karna zaroori hai
+const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 
-// Routes import
 const authRoute = require("./routes/auth-router");
 const contactRoute = require("./routes/contact-router");
 const adminRoute = require("./routes/admin-router");
@@ -17,24 +15,25 @@ const corsOptions = {
   origin: process.env.FRONTEND_URL || "https://aapka-frontend-domain.vercel.app",
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// ⚠️ Agar uploads folder Vercel par nahi mil raha, toh ise comment kar dein
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// 🔥 DATABASE CONNECTION MIDDLEWARE (Connection Pooling)
+// 🔥 Database Middleware
 app.use(async (req, res, next) => {
   try {
-    // Agar pehle se connected nahi hai, tabhi connect karein
     if (mongoose.connection.readyState !== 1) {
       await connectDB();
     }
     next();
   } catch (err) {
     console.error("DB Connection Error:", err);
-    res.status(500).json({ message: "Database Connection Failed" });
+    return res.status(500).json({ message: "Database Connection Failed" });
   }
 });
 
@@ -50,11 +49,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Something went wrong!" });
 });
 
-// Vercel export
 module.exports = app;
 
-// Local development ke liye
+// Local Dev
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 8000;
-  app.listen(PORT, () => console.log(`🚀 Server running locally on ${PORT}`));
+  app.listen(PORT, () => console.log(`🚀 Server running on ${PORT}`));
 }

@@ -1,6 +1,6 @@
 const User = require("../models/user-model");
 const Contact = require("../models/contact-model");
-const Registration = require("../models/registration-model"); // Aapke model ka naam check kar lein
+const Registration = require("../models/eventRegister-model");
 
 const getDashboardStats = async (req, res) => {
   try {
