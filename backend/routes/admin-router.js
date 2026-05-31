@@ -5,6 +5,9 @@ const eventController = require("../controllers/event-controller");
 const authMiddleware = require("../middlewares/auth-middleware");
 const adminMiddleware = require("../middlewares/admin-middleware");
 
+// --- Dashboard Route (Naya add kiya) ---
+router.route("/dashboard-stats").get(authMiddleware, adminMiddleware, adminController.getDashboardStats);
+
 // --- User Routes ---
 router.route("/users").get(authMiddleware, adminMiddleware, adminController.getAllUsers);
 router.route("/users/:id").get(authMiddleware, adminMiddleware, adminController.getUserById);
@@ -15,16 +18,12 @@ router.route("/users/delete/:id").delete(authMiddleware, adminMiddleware, adminC
 router.route("/contacts").get(authMiddleware, adminMiddleware, adminController.getAllContacts);
 router.route("/contacts/delete/:id").delete(authMiddleware, adminMiddleware, adminController.deleteContactById);
 
-// --- Event Routes ---
+// --- Event & Registration Routes ---
 router.route("/events/create").post(authMiddleware, adminMiddleware, eventController.createEvent);
 router.route("/events/update/:id").patch(authMiddleware, adminMiddleware, eventController.updateEvent);
 router.route("/events/delete/:id").delete(authMiddleware, adminMiddleware, eventController.deleteEvent);
-
-// --- Registration Management Routes ---
 router.route("/registrations").get(authMiddleware, adminMiddleware, eventController.getAllRegistrations);
 router.route("/registrations/delete/:id").delete(authMiddleware, adminMiddleware, eventController.deleteRegistration);
-
-// 🟢 Naya route: Registration Approve karne ke liye
 router.route("/registrations/approve/:id").patch(authMiddleware, adminMiddleware, eventController.approveRegistration);
 
 module.exports = router;

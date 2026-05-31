@@ -1,19 +1,28 @@
 const mongoose = require("mongoose");
 
-// URI ko function ke bahar rakhein taake Syntax ka masla na ho
-const URI =
-  "mongodb+srv://aman:aman12345@aman.0sjvg1v.mongodb.net/mern_admin?retryWrites=true&w=majority&appName=aman&tlsAllowInvalidCertificates=true";
+// Cache connection globally
+let cachedConnection = null;
 
 const connectDB = async () => {
-  try {
-    // SSL certificate ka temporary bypass
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  // Agar pehle se connection hai, toh wahi use karein
+  if (cachedConnection) {
+    return cachedConnection;
+  }
 
-    await mongoose.connect(URI);
+  try {
+    const URI = "mongodb+srv://aman:aman12345@aman.0sjvg1v.mongodb.net/mern_admin?retryWrites=true&w=majority&appName=aman&tlsAllowInvalidCertificates=true";
+    
+    // Connection options add karein
+    cachedConnection = await mongoose.connect(URI, {
+      serverSelectionTimeoutMS: 5000,
+    });
+    
     console.log("🔥 MongoDB Atlas Connected Successfully!");
+    return cachedConnection;
   } catch (error) {
     console.error("❌ Connection Failed:", error.message);
-    process.exit(1);
+    // Yahan exit nahi karna hai, Vercel handle karega
+    throw error; 
   }
 };
 
