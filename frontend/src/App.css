@@ -1,0 +1,697 @@
+/* ==========================
+   GOOGLE FONT
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================
+   ROOT VARIABLES
+========================== */
+
+:root {
+  --primary: #646cff;
+  --primary-hover: #535bf2;
+  --bg: #0d1117;
+  --card: #161b22;
+  --card-hover: #1c2128;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --border: #30363d;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* ==========================
+   RESET
+========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.main-content {
+  min-height: 80vh;
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container {
+  width: 100%;
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(5,10,19,.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.8rem 0;
+}
+
+.logo-brand a {
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text);
+  font-size: 1.5rem;
+  transition: .3s;
+}
+
+.nav-links a:hover,
+.active-link {
+  color: var(--primary);
+}
+
+.logout-btn {
+  border: 1px solid var(--danger);
+  color: var(--danger) !important;
+  padding: .8rem 1.8rem;
+  border-radius: .8rem;
+}
+
+.logout-btn:hover {
+  background: var(--danger);
+  color: white !important;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.btn,
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1.2rem 2.4rem;
+  border-radius: .8rem;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn:hover,
+button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-edit {
+  background: #3b82f6;
+}
+
+.btn-delete {
+  background: var(--danger);
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.section-hero,
+.section-about,
+.section-contact,
+.section-gallery-page {
+  padding: 8rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 4rem;
+}
+
+.grid-two-cols {
+  grid-template-columns: repeat(2,1fr);
+}
+
+.hero-content h1 {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-content p {
+  color: var(--muted);
+  font-size: 1.7rem;
+  line-height: 1.8;
+}
+
+.hero-image img {
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+}
+
+/* ==========================
+   CARDS
+========================== */
+
+.card,
+.gallery-card,
+.service-item,
+.table-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.6rem;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.card:hover,
+.gallery-card:hover,
+.service-item:hover {
+  transform: translateY(-6px);
+  background: var(--card-hover);
+}
+
+/* ==========================
+   FORMS
+========================== */
+
+.section-form,
+.form-container,
+.login-form,
+.register-form {
+  background: var(--card);
+  padding: 3rem;
+  border-radius: 1.6rem;
+  border: 1px solid var(--border);
+  max-width: 60rem;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+  font-size: 1.4rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 1.4rem;
+  margin-bottom: 1.8rem;
+  border-radius: .8rem;
+  border: 1px solid var(--border);
+  background: #0b0f14;
+  color: white;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ==========================
+   GALLERY
+========================== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 3rem;
+}
+
+.gallery-card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.gallery-content {
+  padding: 2rem;
+}
+
+.gallery-content h3 {
+  margin-bottom: 1rem;
+}
+
+.gallery-content p {
+  color: var(--muted);
+}
+
+/* ==========================
+   ADMIN LAYOUT
+========================== */
+
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 270px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.admin-menu li {
+  margin-bottom: 1rem;
+}
+
+.admin-menu a {
+  display: block;
+  padding: 1.2rem;
+  border-radius: .8rem;
+  color: var(--muted);
+  transition: .3s;
+}
+
+.admin-menu a:hover,
+.admin-menu a.active {
+  background: rgba(100,108,255,.15);
+  color: white;
+}
+
+.admin-main-content {
+  flex: 1;
+  padding: 3rem;
+}
+
+/* ==========================
+   ADMIN DASHBOARD
+========================== */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 1.6rem;
+  border: 1px solid var(--border);
+}
+
+.stat-card h3 {
+  color: var(--primary);
+  font-size: 3rem;
+}
+
+.stat-card p {
+  color: var(--muted);
+}
+
+/* ==========================
+   TABLES
+========================== */
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+thead {
+  background: #21262d;
+}
+
+th,
+td {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+th {
+  color: var(--primary);
+}
+
+tr {
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:hover {
+  background: rgba(255,255,255,.03);
+}
+
+/* ==========================
+   ADMIN UPDATE FORM
+========================== */
+
+.admin-update-form {
+  max-width: 550px;
+  margin: auto;
+  background: var(--card);
+  padding: 3rem;
+  border-radius: 1.6rem;
+}
+
+.admin-update-form h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer {
+  background: #0b0e1a;
+  padding: 6rem 0 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 3rem;
+}
+
+.footer-column h2,
+.footer-column h3 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.footer-column p,
+.footer-column li {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.footer-links a {
+  color: var(--muted);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.footer-social a:hover {
+  background: var(--primary);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+
+  html {
+    font-size: 55%;
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .grid-two-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-container {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}
+/* ==========================
+   ENHANCEMENTS & POLISH
+========================== */
+
+/* 1. Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* 2. Selection Color */
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* 3. Button Loading Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 4. Improved Form States */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2);
+}
+
+/* 5. Utility for better text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 6. Admin Table Container Fix */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* ==========================================
+   ENHANCED EVENT & REGISTRATION STYLES 
+   ========================================== */
+
+/* 1. Uniform Card Image Container */
+.event-image-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 1.6rem 1.6rem 0 0;
+    background: #21262d;
+}
+
+.event-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* 🟢 Yeh 'square' shape problem solve karega */
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .event-image-wrapper img {
+    transform: scale(1.05); /* Professional zoom effect */
+}
+
+/* 2. Text Truncate Utility (Random text aur lamba title fix karne ke liye) */
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.desc-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Sirf 3 lines dikhengi */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+/* 3. Professional Table Styling for Registrations */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.admin-table th {
+    background: #21262d;
+    padding: 2rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.admin-table td {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* 4. Action Button Styling */
+.btn-small {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+}
+/* Card Container */
+.card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 1.6rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+/* Gallery Grid Layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Card Design */
+.card {
+  background: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  border: 1px solid #334155;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #6366f1;
+}
+
+.event-image-wrapper {
+  height: 220px;
+  width: 100%;
+}
+
+.event-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Image ko stretch hone se rokega */
+}
+
+/* Text Truncation (Junk text ko limit karne ke liye) */
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
